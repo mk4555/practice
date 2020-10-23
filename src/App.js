@@ -1,16 +1,29 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import {
+  CssBaseline,
+  withStyles,
+} from '@material-ui/core';
 
-import './App.css';
+import AppHeader from './components/AppHeader';
+import Home from './pages/Home';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Hello</h1>
-        <h2>HI</h2>
-      </header>
-    </div>
-  );
-}
+const styles = theme => ({
+  main: {
+    padding: theme.spacing(3),
+    [theme.breakpoints.down('xs')]: {
+      padding: theme.spacing(2),
+    },
+  },
+});
 
-export default App;
+const App = ({ classes }) => (
+  <Fragment>
+    <CssBaseline />
+    <AppHeader />
+    <main className={classes.main}>
+      <Home />
+    </main>
+  </Fragment>
+);
+
+export default withStyles(styles)(App);
